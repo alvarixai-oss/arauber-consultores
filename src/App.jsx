@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo } from "react";
 import { logoData } from "./logoData";
+import ShapeGrid from "./ShapeGrid";
 
 const services = [
   {
@@ -82,6 +83,33 @@ export default function App() {
 
   return (
     <main className="site-shell">
+      <div className="page-shape-grid" aria-hidden="true">
+        <ShapeGrid
+          shape="square"
+          cellSize={88}
+          lineWidth={0.55}
+          direction="diagonal"
+          speed={0.055}
+          lineColor="#8da5b3"
+          hoverColor="#8da5b3"
+          fillOpacity={0}
+          rainbow={false}
+          tiltX={0}
+          tiltY={0}
+          radius={0}
+          trail={0.4}
+          glow={0}
+          twinkle={0}
+          fade={0.12}
+          clickCascade={false}
+          intro={false}
+          opacity={0.30}
+          backgroundColor="transparent"
+          paused={false}
+          dpr={1}
+          enableMouseInteraction={false}
+        />
+      </div>
       <header className="site-header">
         <a className="logo" href="#inicio" aria-label="Arauber Consultores, inicio">
           <img src={logoData} alt="Arauber Consultores" />
