@@ -24,10 +24,35 @@ const services = [
   }
 ];
 
-const principles = [
-  ["Rigor", "Cada decisión parte de información bien revisada y de un criterio profesional sólido."],
-  ["Cercanía", "Una relación directa, clara y estable con las personas que conocen tu empresa."],
-  ["Continuidad", "Acompañamiento pensado a largo plazo, no únicamente para resolver una obligación puntual."]
+const workSteps = [
+  ["01", "Entendemos tu empresa", "Partimos de tu actividad, tus prioridades y la realidad de tu negocio."],
+  ["02", "Ordenamos la información", "Damos estructura a la documentación y a los datos que sostienen cada decisión."],
+  ["03", "Cumplimos y anticipamos", "Seguimos obligaciones, plazos y cambios normativos con criterio y previsión."],
+  ["04", "Te ayudamos a planificar", "Convertimos la información fiscal y contable en contexto útil para decidir."]
+];
+
+const fiscalUpdates = [
+  {
+    date: "Octubre 2026",
+    tag: "Facturación",
+    title: "VERI*FACTU: nuevos plazos para adaptar los sistemas de facturación",
+    text: "Las entidades sujetas al Impuesto sobre Sociedades deberán tener sus sistemas adaptados antes del 1 de enero de 2027.",
+    href: "https://sede.agenciatributaria.gob.es/Sede/iva/sistemas-informaticos-facturacion-verifactu.html"
+  },
+  {
+    date: "Octubre 2026",
+    tag: "Empresa",
+    title: "Factura electrónica: comienza el calendario de implantación",
+    text: "La entrada en vigor de la Orden HAC/1028/2026 activa los plazos de aplicación de la factura electrónica entre empresas.",
+    href: "https://sede.agenciatributaria.gob.es/Sede/iva/factura-electronica/calendario-implantacion.html"
+  },
+  {
+    date: "2026",
+    tag: "Sociedades",
+    title: "Tipos del Impuesto sobre Sociedades aplicables en 2026",
+    text: "La Agencia Tributaria recoge los tipos vigentes para el ejercicio, con especial atención a micropymes y entidades de reducida dimensión.",
+    href: "https://sede.agenciatributaria.gob.es/Sede/impuesto-sobre-sociedades/que-base-imponible-se-determina-sociedades/tipo-impositivo.html"
+  }
 ];
 
 export default function App() {
@@ -62,6 +87,7 @@ export default function App() {
           <a href="#firma">La firma</a>
           <a href="#servicios">Servicios</a>
           <a href="#metodo">Cómo trabajamos</a>
+          <a href="#actualidad">Actualidad</a>
           <a href="#contacto">Contacto</a>
         </nav>
 
@@ -95,6 +121,13 @@ export default function App() {
             <div><span>03</span><strong>Visión de empresa</strong><p>Fiscalidad y contabilidad al servicio de decisiones reales.</p></div>
           </div>
         </aside>
+      </section>
+
+      <section className="credibility-strip" aria-label="Trayectoria y áreas de especialización">
+        <div><strong>Desde 1992</strong><span>Acompañando a empresas</span></div>
+        <div><strong>Fiscal</strong><span>Asesoramiento y planificación</span></div>
+        <div><strong>Contable</strong><span>Información clara y ordenada</span></div>
+        <div><strong>Gestión</strong><span>Contexto para decidir</span></div>
       </section>
 
       <section className="firm section" id="firma">
@@ -146,9 +179,9 @@ export default function App() {
           </div>
 
           <div className="principles">
-            {principles.map(([title, text], index) => (
-              <article className="principle reveal" data-reveal key={title}>
-                <span>0{index + 1}</span>
+            {workSteps.map(([number, title, text]) => (
+              <article className="principle reveal" data-reveal key={number}>
+                <span>{number}</span>
                 <h3>{title}</h3>
                 <p>{text}</p>
               </article>
@@ -157,8 +190,34 @@ export default function App() {
         </div>
       </section>
 
-      <section className="confidence section">
+      <section className="fiscal section" id="actualidad">
         <div className="section-index">03</div>
+        <div className="section-heading reveal" data-reveal>
+          <p className="small-label">Actualidad fiscal</p>
+          <h2>Lo importante, explicado con claridad.</h2>
+          <p className="section-intro">
+            Una selección breve de cambios y fechas que pueden afectar a empresas y profesionales.
+          </p>
+        </div>
+
+        <div className="fiscal-list">
+          {fiscalUpdates.map((item) => (
+            <a className="fiscal-row reveal" data-reveal href={item.href} target="_blank" rel="noreferrer" key={item.title}>
+              <div className="fiscal-meta">
+                <span>{item.date}</span>
+                <strong>{item.tag}</strong>
+              </div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+              <span className="fiscal-arrow" aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </div>
+        <p className="fiscal-source reveal" data-reveal>Información basada en publicaciones oficiales de la Agencia Tributaria.</p>
+      </section>
+
+      <section className="confidence section">
+        <div className="section-index">04</div>
         <div className="confidence-grid">
           <div className="reveal" data-reveal>
             <p className="small-label">Una relación a largo plazo</p>
