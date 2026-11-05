@@ -914,3 +914,51 @@ footer p { margin: 0; }
     margin-right: -18px;
   }
 }
+
+
+/* Stable Silk-inspired background: keeps the React Bits visual direction without WebGL runtime risk */
+.hero-silk {
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 18% 30%, rgba(111, 174, 202, .20) 0%, transparent 36%),
+    radial-gradient(ellipse at 78% 18%, rgba(91, 147, 178, .18) 0%, transparent 34%),
+    linear-gradient(132deg, #0c172a 0%, #162d49 42%, #0c192d 72%, #18344e 100%);
+}
+
+.hero-silk::before,
+.hero-silk::after {
+  content: "";
+  position: absolute;
+  inset: -24%;
+  background:
+    repeating-linear-gradient(
+      118deg,
+      rgba(170, 211, 227, .00) 0 7%,
+      rgba(170, 211, 227, .08) 9%,
+      rgba(255, 255, 255, .015) 13%,
+      rgba(170, 211, 227, .00) 19%
+    );
+  filter: blur(18px);
+  transform: rotate(-7deg) scale(1.12);
+  animation: silkDrift 22s ease-in-out infinite alternate;
+  opacity: .72;
+}
+
+.hero-silk::after {
+  inset: -32%;
+  transform: rotate(11deg) scale(1.16);
+  animation-duration: 30s;
+  animation-direction: alternate-reverse;
+  opacity: .38;
+}
+
+@keyframes silkDrift {
+  0% { transform: translate3d(-2%, -1%, 0) rotate(-7deg) scale(1.12); }
+  50% { transform: translate3d(2%, 2%, 0) rotate(-3deg) scale(1.16); }
+  100% { transform: translate3d(4%, -2%, 0) rotate(-8deg) scale(1.13); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-silk::before,
+  .hero-silk::after { animation: none; }
+}
