@@ -1534,3 +1534,225 @@ footer {
     opacity: .085;
   }
 }
+
+
+/* Final polish: cleaner, more institutional and solid */
+:root {
+  --paper: #f4f5f3;
+  --ink: #172238;
+  --muted: #667181;
+  --line: rgba(23, 34, 56, .12);
+  --navy: #17263f;
+  --sky: #7aa9be;
+}
+
+body {
+  background-color: #f2f4f4 !important;
+  background-image:
+    url("/light-threads-clean.svg"),
+    linear-gradient(180deg, #f4f6f5 0%, #eef2f3 48%, #f5f5f2 100%) !important;
+  background-size: 100vw auto, 100% 100% !important;
+  background-repeat: repeat-y, no-repeat !important;
+  background-position: center top, center !important;
+  background-attachment: scroll, fixed !important;
+}
+
+.site-header {
+  min-height: 86px;
+  background: rgba(247, 247, 244, .97);
+  border-bottom: 1px solid rgba(23, 34, 56, .11);
+  box-shadow: none;
+}
+
+.site-header nav {
+  color: #3f495a;
+}
+
+.header-action {
+  color: var(--navy);
+  border-bottom-color: rgba(23, 38, 63, .72);
+}
+
+.hero-trust {
+  background: rgba(14, 27, 46, .72);
+  border: 1px solid rgba(255,255,255,.13);
+  box-shadow: none;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* Stronger section structure, softer decoration */
+.credibility-strip::after {
+  background: rgba(248, 248, 245, .94) !important;
+}
+
+.firm::after {
+  background: rgba(226, 235, 240, .90) !important;
+}
+
+.services::after {
+  background: rgba(249, 249, 247, .94) !important;
+}
+
+.fiscal::after {
+  background: rgba(226, 235, 240, .90) !important;
+}
+
+.confidence::after {
+  background: rgba(249, 249, 247, .95) !important;
+}
+
+.firm::before,
+.services::before,
+.fiscal::before,
+.confidence::before {
+  display: none !important;
+}
+
+.section {
+  padding-top: 132px;
+  padding-bottom: 132px;
+}
+
+.firm {
+  gap: 120px;
+}
+
+.firm h2,
+.section-heading h2,
+.confidence h2 {
+  font-weight: 560;
+  letter-spacing: -.045em;
+}
+
+.firm-text {
+  border-top-color: rgba(23, 34, 56, .16);
+}
+
+.service-list,
+.fiscal-list,
+.timeline {
+  border-top-color: rgba(23, 34, 56, .14);
+}
+
+.service-row,
+.fiscal-row,
+.step {
+  border-bottom-color: rgba(23, 34, 56, .12);
+}
+
+.service-row:hover,
+.fiscal-row:hover {
+  background: rgba(255,255,255,.38);
+  padding-left: 8px;
+}
+
+.service-row h3,
+.fiscal-row h3,
+.step h3 {
+  color: #18253c;
+  font-weight: 600;
+}
+
+.service-row p,
+.fiscal-row p,
+.firm-text p,
+.section-intro {
+  color: #606c7d;
+}
+
+.credibility-strip {
+  border-bottom: 1px solid rgba(23, 34, 56, .11);
+}
+
+.credibility-strip > div {
+  border-right-color: rgba(23, 34, 56, .10);
+}
+
+.credibility-strip strong {
+  color: #1c2940;
+  font-weight: 640;
+}
+
+.method {
+  background: #17263f;
+}
+
+.method::before,
+.contact::before {
+  opacity: .035 !important;
+  background-image: url("/dark-threads.svg");
+}
+
+.hero::after {
+  opacity: .04 !important;
+}
+
+.method-inner {
+  padding-top: 124px;
+  padding-bottom: 124px;
+}
+
+.principles {
+  border-top-color: rgba(255,255,255,.14);
+}
+
+.principle {
+  border-bottom-color: rgba(255,255,255,.13);
+}
+
+.contact {
+  background: #101d31;
+}
+
+.contact-inner {
+  padding-top: 108px;
+  padding-bottom: 108px;
+}
+
+.confidence blockquote {
+  border-left-color: rgba(112, 169, 196, .72);
+  color: #536071;
+}
+
+footer {
+  background: rgba(239, 242, 242, .94) !important;
+  border-top: 1px solid rgba(23, 34, 56, .08);
+}
+
+/* No decorative motion in the body: solidity over spectacle */
+body,
+.credibility-strip::after,
+.firm::after,
+.services::after,
+.fiscal::after,
+.confidence::after {
+  animation: none !important;
+}
+
+@media (max-width: 1020px) {
+  .section {
+    padding-top: 110px;
+    padding-bottom: 110px;
+  }
+
+  .firm {
+    gap: 60px;
+  }
+}
+
+@media (max-width: 720px) {
+  body {
+    background-size: 1250px auto, 100% 100% !important;
+  }
+
+  .section {
+    padding-top: 92px;
+    padding-bottom: 92px;
+  }
+
+  .hero-trust {
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+  }
+}
