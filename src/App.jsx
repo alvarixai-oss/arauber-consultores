@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo } from "react";
 import { logoData } from "./logoData";
-import Silk from "./Silk";
 
 const services = [
   {
@@ -100,26 +99,7 @@ export default function App() {
       </header>
 
       <section className="hero" id="inicio">
-        <div className="hero-silk" aria-hidden="true">
-          <Silk
-            speed={0.42}
-            scale={0.92}
-            color="#173b5b"
-            sheenColor="#a7d4e6"
-            noiseIntensity={0.28}
-            rotation={0.18}
-            sheen={0.24}
-            depth={0.48}
-            glow={0.12}
-            ripple={0.16}
-            wave={0.42}
-            variation={2}
-            mouseInteraction={false}
-            clickRipple={false}
-            intro={false}
-            dpr={1}
-          />
-        </div>
+        <div className="hero-silk" aria-hidden="true" />
         <div className="hero-vignette" aria-hidden="true" />
 
         <div className="hero-copy reveal" data-reveal>
