@@ -1188,3 +1188,117 @@ footer {
     animation: none;
   }
 }
+
+
+/* Refined alternating light palette */
+body {
+  background: #f4f5f3;
+  animation: none;
+}
+
+.credibility-strip {
+  background:
+    linear-gradient(rgba(248,248,245,.94), rgba(248,248,245,.94)),
+    url("/light-threads.svg");
+  background-size: auto, 1550px auto;
+  background-position: center, 50% 12%;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.firm {
+  background:
+    linear-gradient(rgba(228,237,242,.78), rgba(228,237,242,.78)),
+    url("/light-threads.svg");
+  background-size: auto, 1750px auto;
+  background-position: center, 50% 40%;
+  background-repeat: no-repeat, no-repeat;
+  box-shadow: 0 0 0 100vmax #e4edf2;
+  clip-path: inset(0 -100vmax);
+}
+
+.services {
+  background:
+    linear-gradient(rgba(248,248,245,.90), rgba(248,248,245,.90)),
+    url("/light-threads.svg");
+  background-size: auto, 1850px auto;
+  background-position: center, 52% 35%;
+  background-repeat: no-repeat, no-repeat;
+  box-shadow: 0 0 0 100vmax #f8f8f5;
+  clip-path: inset(0 -100vmax);
+}
+
+.fiscal {
+  background:
+    linear-gradient(rgba(229,238,242,.80), rgba(229,238,242,.80)),
+    url("/light-threads.svg");
+  background-size: auto, 1800px auto;
+  background-position: center, 48% 58%;
+  background-repeat: no-repeat, no-repeat;
+  box-shadow: 0 0 0 100vmax #e5eef2;
+  clip-path: inset(0 -100vmax);
+}
+
+.confidence {
+  background:
+    linear-gradient(rgba(249,249,246,.92), rgba(249,249,246,.92)),
+    url("/light-threads.svg");
+  background-size: auto, 1700px auto;
+  background-position: center, 54% 70%;
+  background-repeat: no-repeat, no-repeat;
+  box-shadow: 0 0 0 100vmax #f9f9f6;
+  clip-path: inset(0 -100vmax);
+}
+
+footer {
+  background: #f1f3f3;
+  box-shadow: 0 0 0 100vmax #f1f3f3;
+  clip-path: inset(0 -100vmax);
+}
+
+.firm::before,
+.services::before,
+.fiscal::before,
+.confidence::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,.12) 0%,
+    rgba(255,255,255,0) 38%,
+    rgba(112,145,165,.05) 100%
+  );
+  z-index: -1;
+}
+
+.firm,
+.services,
+.fiscal,
+.confidence {
+  isolation: isolate;
+}
+
+/* Slightly stronger line presence on tinted sections */
+.firm,
+.fiscal {
+  background-blend-mode: normal;
+}
+
+@media (max-width: 720px) {
+  .firm {
+    background-size: auto, 1250px auto;
+  }
+
+  .services {
+    background-size: auto, 1350px auto;
+  }
+
+  .fiscal {
+    background-size: auto, 1300px auto;
+  }
+
+  .confidence {
+    background-size: auto, 1250px auto;
+  }
+}
