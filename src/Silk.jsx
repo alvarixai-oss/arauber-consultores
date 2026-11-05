@@ -1,6 +1,4 @@
 // React Bits Silk background component. Source: DavidHDev/react-bits
-'use client';
-
 import { useEffect, useRef } from 'react';
 
 import './Silk.css';
