@@ -962,3 +962,27 @@ footer p { margin: 0; }
   .hero-silk::before,
   .hero-silk::after { animation: none; }
 }
+
+
+/* Real React Bits Silk canvas: visible, with the CSS layer retained only as fallback */
+.hero-silk {
+  opacity: 1;
+}
+.hero-silk .silk-container {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+.hero-silk .silk-canvas {
+  opacity: .96;
+}
+.hero-vignette {
+  background:
+    linear-gradient(90deg, rgba(7, 16, 30, .76) 0%, rgba(8, 19, 36, .52) 42%, rgba(8, 19, 36, .18) 100%),
+    radial-gradient(circle at 78% 34%, rgba(117, 188, 215, .08), transparent 38%);
+}
+@media (max-width: 720px) {
+  .hero-vignette {
+    background: linear-gradient(180deg, rgba(7, 16, 30, .72) 0%, rgba(8, 19, 36, .46) 60%, rgba(7, 16, 30, .76) 100%);
+  }
+}
