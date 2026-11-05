@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo } from "react";
 import { logoData } from "./logoData";
-import Threads from "./Threads";
 
 const services = [
   {
@@ -83,28 +82,6 @@ export default function App() {
 
   return (
     <main className="site-shell">
-      <div className="site-threads" aria-hidden="true">
-        <Threads
-          color="#6f91a5"
-          accentColor="#abc1cc"
-          amplitude={0.42}
-          distance={0.5}
-          enableMouseInteraction={false}
-          lineCount={28}
-          thickness={0.32}
-          softness={1.8}
-          speed={0.14}
-          waves={0.62}
-          split={0.16}
-          fray={0.32}
-          angle={18}
-          taper={0.94}
-          brightness={1}
-          fade={0.12}
-          opacity={0.16}
-          paused={false}
-        />
-      </div>
       <header className="site-header">
         <a className="logo" href="#inicio" aria-label="Arauber Consultores, inicio">
           <img src={logoData} alt="Arauber Consultores" />
