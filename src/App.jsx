@@ -1,225 +1,194 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo } from "react";
+import { logoData } from "./logoData";
 
 const services = [
   {
     number: "01",
     title: "Asesoramiento fiscal",
-    text: "Acompañamiento para gestionar obligaciones tributarias con rigor, previsión y criterio empresarial."
+    text: "Planificación y seguimiento de las obligaciones tributarias con una visión práctica, rigurosa y adaptada a cada empresa."
   },
   {
     number: "02",
     title: "Contabilidad",
-    text: "Una visión ordenada y fiable de la información contable para entender mejor el negocio y decidir con seguridad."
+    text: "Información contable ordenada y fiable para conocer la situación del negocio y trabajar con mayor seguridad."
   },
   {
     number: "03",
     title: "Consultoría fiscal",
-    text: "Análisis personalizado de situaciones con impacto fiscal para encontrar la opción adecuada en cada momento."
+    text: "Análisis de operaciones y decisiones con impacto tributario para anticipar escenarios y reducir incertidumbre."
   },
   {
     number: "04",
     title: "Consultoría de gestión",
-    text: "Apoyo a la dirección para convertir información financiera y operativa en decisiones más claras."
+    text: "Apoyo a la dirección para convertir información financiera y operativa en decisiones empresariales mejor fundamentadas."
   }
 ];
 
-const steps = [
-  ["01", "Entendemos tu empresa", "Analizamos la situación, las prioridades y la forma de trabajar de tu negocio."],
-  ["02", "Ordenamos la información", "Centralizamos la documentación y establecemos un flujo de trabajo claro."],
-  ["03", "Gestionamos con rigor", "Seguimiento contable y fiscal con especial atención a los plazos y al detalle."],
-  ["04", "Te ayudamos a decidir", "Transformamos la información en contexto útil para la dirección de la empresa."]
+const principles = [
+  ["Rigor", "Cada decisión parte de información bien revisada y de un criterio profesional sólido."],
+  ["Cercanía", "Una relación directa, clara y estable con las personas que conocen tu empresa."],
+  ["Continuidad", "Acompañamiento pensado a largo plazo, no únicamente para resolver una obligación puntual."]
 ];
 
 export default function App() {
-  const [sent, setSent] = useState(false);
-
   const year = useMemo(() => new Date().getFullYear(), []);
 
-  const submit = (event) => {
-    event.preventDefault();
-    setSent(true);
-  };
+  useEffect(() => {
+    const elements = document.querySelectorAll("[data-reveal]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.14 }
+    );
+
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <main>
+    <main className="site-shell">
       <header className="site-header">
-        <a className="brand" href="#inicio" aria-label="Arauber Consultores, inicio">
-          <span className="brand-mark">AC</span>
-          <span className="brand-copy">
-            <strong>Arauber</strong>
-            <span>Consultores</span>
-          </span>
+        <a className="logo" href="#inicio" aria-label="Arauber Consultores, inicio">
+          <img src={logoData} alt="Arauber Consultores" />
         </a>
 
         <nav aria-label="Navegación principal">
+          <a href="#firma">La firma</a>
           <a href="#servicios">Servicios</a>
           <a href="#metodo">Cómo trabajamos</a>
           <a href="#contacto">Contacto</a>
         </nav>
 
-        <a className="header-cta" href="#contacto">Solicitar asesoramiento</a>
+        <a className="header-action" href="#contacto">Hablemos</a>
       </header>
 
       <section className="hero" id="inicio">
-        <div className="hero-grid" aria-hidden="true" />
-        <div className="orb orb-one" aria-hidden="true" />
-        <div className="orb orb-two" aria-hidden="true" />
-
-        <div className="hero-copy">
-          <div className="eyebrow">Asesoría fiscal · Contabilidad · Consultoría</div>
+        <div className="hero-copy reveal" data-reveal>
+          <p className="eyebrow">Asesoría fiscal · Contabilidad · Consultoría</p>
           <h1>
-            Claridad fiscal.
-            <span>Decisiones con confianza.</span>
+            Rigor para decidir
+            <span>con confianza.</span>
           </h1>
-          <p>
-            Acompañamos a empresas con una gestión fiscal y contable rigurosa,
-            cercana y orientada a convertir la información en mejores decisiones.
+          <p className="hero-lead">
+            Acompañamos a empresas con una visión fiscal y contable clara,
+            cercana y orientada a tomar mejores decisiones.
           </p>
+
           <div className="hero-actions">
-            <a className="button button-primary" href="#contacto">Hablemos de tu empresa</a>
-            <a className="button button-ghost" href="#servicios">Descubrir servicios</a>
-          </div>
-
-          <div className="hero-note">
-            <span className="pulse" />
-            <span>Atención profesional y acompañamiento personalizado</span>
+            <a className="button button-primary" href="#contacto">Solicitar asesoramiento</a>
+            <a className="text-link" href="#servicios">Conocer nuestros servicios <span>↘</span></a>
           </div>
         </div>
 
-        <div className="hero-panel" aria-label="Áreas de trabajo">
-          <div className="panel-kicker">Visión integral</div>
-          <div className="panel-title">Gestión que conecta todas las piezas.</div>
-          <div className="flow">
-            <span>Documentación</span>
-            <i />
-            <span>Contabilidad</span>
-            <i />
-            <span>Fiscalidad</span>
-            <i />
-            <span>Decisión</span>
+        <aside className="hero-trust reveal" data-reveal aria-label="Valores de Arauber Consultores">
+          <p className="small-label">Una trayectoria consolidada</p>
+          <h2>Confianza construida con criterio profesional y continuidad.</h2>
+          <div className="trust-list">
+            <div><span>01</span><strong>Experiencia</strong><p>Una firma con más de tres décadas de trayectoria empresarial.</p></div>
+            <div><span>02</span><strong>Relación directa</strong><p>Asesoramiento cercano y comprensible para cada cliente.</p></div>
+            <div><span>03</span><strong>Visión de empresa</strong><p>Fiscalidad y contabilidad al servicio de decisiones reales.</p></div>
           </div>
-          <div className="panel-card">
-            <span>Enfoque</span>
-            <strong>Rigor + cercanía + visión empresarial</strong>
-          </div>
-        </div>
+        </aside>
       </section>
 
-      <section className="intro section">
-        <div className="section-label">Arauber Consultores</div>
-        <div className="intro-grid">
-          <h2>Más que gestionar números. Ayudamos a entenderlos.</h2>
+      <section className="firm section" id="firma">
+        <div className="section-index">01</div>
+        <div className="firm-copy reveal" data-reveal>
+          <p className="small-label">Arauber Consultores</p>
+          <h2>Una asesoría que aporta claridad donde otros solo ven obligaciones.</h2>
+        </div>
+        <div className="firm-text reveal" data-reveal>
           <p>
-            La fiscalidad y la contabilidad no deberían sentirse como una carga aislada.
-            Las convertimos en una base útil para trabajar con orden, anticiparse y tomar
-            decisiones con más contexto.
+            Nuestro trabajo parte de una idea sencilla: la información fiscal y contable
+            debe ayudar a la empresa a avanzar, no convertirse en una carga.
+          </p>
+          <p>
+            Por eso combinamos precisión técnica, seguimiento y una relación profesional
+            estable para que cada decisión se tome con mayor contexto y tranquilidad.
           </p>
         </div>
       </section>
 
-      <section className="section services" id="servicios">
-        <div className="section-heading">
-          <div>
-            <div className="section-label">Servicios</div>
-            <h2>Una visión completa para la gestión empresarial.</h2>
-          </div>
-          <p>Asesoramiento pensado para acompañar el día a día y también las decisiones importantes.</p>
+      <section className="services section" id="servicios">
+        <div className="section-index">02</div>
+        <div className="section-heading reveal" data-reveal>
+          <p className="small-label">Áreas de trabajo</p>
+          <h2>Asesoramiento integral para la gestión de tu empresa.</h2>
         </div>
 
-        <div className="service-grid">
+        <div className="service-list">
           {services.map((service) => (
-            <article className="service-card" key={service.number}>
-              <div className="service-top">
-                <span>{service.number}</span>
-                <span className="service-arrow">↗</span>
-              </div>
+            <article className="service-row reveal" data-reveal key={service.number}>
+              <span className="service-number">{service.number}</span>
               <h3>{service.title}</h3>
               <p>{service.text}</p>
+              <span className="service-mark" aria-hidden="true">↗</span>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="statement">
-        <div className="statement-track" aria-hidden="true">
-          <span>Fiscalidad</span><i>•</i><span>Contabilidad</span><i>•</i>
-          <span>Gestión</span><i>•</i><span>Estrategia</span><i>•</i>
-          <span>Fiscalidad</span><i>•</i><span>Contabilidad</span>
-        </div>
-        <div className="statement-copy">
-          <div className="section-label light">Una forma diferente de acompañar</div>
-          <h2>Profesionalidad tradicional. Gestión adaptada al presente.</h2>
-          <p>
-            Procesos claros, información bien organizada y una relación cercana para que
-            la empresa pueda centrarse en avanzar.
-          </p>
-        </div>
-      </section>
-
-      <section className="section method" id="metodo">
-        <div className="section-heading">
-          <div>
-            <div className="section-label">Cómo trabajamos</div>
-            <h2>Orden, seguimiento y contexto en cada paso.</h2>
+      <section className="method" id="metodo">
+        <div className="method-inner">
+          <div className="method-intro reveal" data-reveal>
+            <p className="small-label light">Cómo trabajamos</p>
+            <h2>La confianza no se promete. Se demuestra en la forma de trabajar.</h2>
+            <p>
+              Orden, seguimiento y criterio para que cada cliente tenga una visión clara
+              de su situación y pueda centrarse en su negocio.
+            </p>
           </div>
-        </div>
 
-        <div className="timeline">
-          {steps.map(([number, title, text]) => (
-            <article className="step" key={number}>
-              <div className="step-number">{number}</div>
-              <div>
+          <div className="principles">
+            {principles.map(([title, text], index) => (
+              <article className="principle reveal" data-reveal key={title}>
+                <span>0{index + 1}</span>
                 <h3>{title}</h3>
                 <p>{text}</p>
-              </div>
-            </article>
-          ))}
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="contact section" id="contacto">
-        <div className="contact-copy">
-          <div className="section-label light">Contacto</div>
+      <section className="confidence section">
+        <div className="section-index">03</div>
+        <div className="confidence-grid">
+          <div className="reveal" data-reveal>
+            <p className="small-label">Una relación a largo plazo</p>
+            <h2>Solidez, sin ruido.</h2>
+          </div>
+          <blockquote className="reveal" data-reveal>
+            “La mejor asesoría es la que consigue que una decisión compleja se entienda con claridad.”
+          </blockquote>
+        </div>
+      </section>
+
+      <section className="contact" id="contacto">
+        <div className="contact-inner reveal" data-reveal>
+          <p className="small-label light">Contacto</p>
           <h2>Hablemos de tu empresa.</h2>
           <p>
-            Cuéntanos qué necesitas y estudiaremos cómo ayudarte desde una perspectiva
-            fiscal, contable y empresarial.
+            Si buscas un acompañamiento fiscal, contable o de gestión con una relación
+            profesional estable, podemos empezar por una conversación.
           </p>
-        </div>
 
-        <form className="contact-form" onSubmit={submit}>
-          <label>
-            Nombre
-            <input name="name" placeholder="Tu nombre" required />
-          </label>
-          <label>
-            Empresa
-            <input name="company" placeholder="Nombre de la empresa" />
-          </label>
-          <label>
-            Email
-            <input name="email" type="email" placeholder="nombre@empresa.com" required />
-          </label>
-          <label>
-            ¿En qué podemos ayudarte?
-            <textarea name="message" rows="4" placeholder="Cuéntanos brevemente qué necesitas" required />
-          </label>
-          <button className="button button-light" type="submit">Enviar consulta</button>
-          {sent && (
-            <p className="form-success" role="status">
-              Consulta preparada. Conectaremos este formulario al canal definitivo antes de publicar la versión final.
-            </p>
-          )}
-        </form>
+          <div className="contact-actions">
+            <a className="button button-light" href="tel:+34915783601">91 578 36 01</a>
+            <span>C/ Albasanz, 67 · Madrid</span>
+          </div>
+        </div>
       </section>
 
       <footer>
-        <a className="brand footer-brand" href="#inicio">
-          <span className="brand-mark">AC</span>
-          <span className="brand-copy">
-            <strong>Arauber</strong>
-            <span>Consultores</span>
-          </span>
+        <a className="footer-logo" href="#inicio" aria-label="Arauber Consultores, volver al inicio">
+          <img src={logoData} alt="Arauber Consultores" />
         </a>
         <p>Asesoramiento fiscal, contable y consultoría empresarial.</p>
         <span>© {year} Arauber Consultores</span>
