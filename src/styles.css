@@ -1756,3 +1756,141 @@ body,
     -webkit-backdrop-filter: blur(3px);
   }
 }
+
+
+/* React Bits ShapeGrid — final restrained page background */
+body {
+  background: #f1f4f4 !important;
+  background-image: none !important;
+  animation: none !important;
+}
+
+.site-shell {
+  position: relative;
+  isolation: isolate;
+  background: #f1f4f4;
+}
+
+.page-shape-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .78;
+  background:
+    radial-gradient(circle at 16% 14%, rgba(122,169,190,.08), transparent 30%),
+    radial-gradient(circle at 86% 72%, rgba(23,38,63,.045), transparent 34%);
+}
+
+.page-shape-grid .shape-grid {
+  position: absolute;
+  inset: -4%;
+  width: 108%;
+  height: 108%;
+}
+
+.site-header,
+.hero,
+.credibility-strip,
+.section,
+.method,
+.contact,
+footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* Remove the previous SVG Threads layers so the new React Bits grid is the only ambient pattern. */
+.credibility-strip::after,
+.firm::after,
+.services::after,
+.fiscal::after,
+.confidence::after,
+.hero::after,
+.method::before,
+.contact::before {
+  display: none !important;
+}
+
+.credibility-strip {
+  background: rgba(248,248,246,.80) !important;
+  box-shadow:
+    0 0 0 100vmax rgba(248,248,246,.80),
+    0 1px 0 rgba(23,34,56,.09) !important;
+  clip-path: inset(0 -100vmax) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.firm {
+  background: rgba(225,235,240,.62) !important;
+  box-shadow: 0 0 0 100vmax rgba(225,235,240,.62) !important;
+  clip-path: inset(0 -100vmax) !important;
+}
+
+.services {
+  background: rgba(249,249,247,.78) !important;
+  box-shadow: 0 0 0 100vmax rgba(249,249,247,.78) !important;
+  clip-path: inset(0 -100vmax) !important;
+}
+
+.fiscal {
+  background: rgba(225,235,240,.62) !important;
+  box-shadow: 0 0 0 100vmax rgba(225,235,240,.62) !important;
+  clip-path: inset(0 -100vmax) !important;
+}
+
+.confidence {
+  background: rgba(249,249,247,.82) !important;
+  box-shadow: 0 0 0 100vmax rgba(249,249,247,.82) !important;
+  clip-path: inset(0 -100vmax) !important;
+}
+
+/* Dark areas stay authoritative and block the grid cleanly. */
+.hero {
+  background: #17263f;
+}
+
+.method {
+  background: #17263f;
+}
+
+.contact {
+  background: #101d31;
+}
+
+footer {
+  background: rgba(239,242,242,.90) !important;
+  box-shadow: 0 0 0 100vmax rgba(239,242,242,.90) !important;
+  clip-path: inset(0 -100vmax) !important;
+}
+
+/* Slightly calmer typography/lines to preserve solidity. */
+.service-row,
+.fiscal-row {
+  transition: background .22s ease, padding-left .22s ease;
+}
+
+.service-row:hover,
+.fiscal-row:hover {
+  padding-left: 6px;
+  background: rgba(255,255,255,.30);
+}
+
+@media (max-width: 720px) {
+  .page-shape-grid {
+    opacity: .60;
+  }
+
+  .page-shape-grid .shape-grid {
+    inset: -8%;
+    width: 116%;
+    height: 116%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-shape-grid {
+    opacity: .52;
+  }
+}
