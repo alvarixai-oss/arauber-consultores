@@ -1302,3 +1302,103 @@ footer {
     background-size: auto, 1250px auto;
   }
 }
+
+
+/* Full-bleed light backgrounds: extend the Threads pattern to both viewport edges */
+.credibility-strip,
+.firm,
+.services,
+.fiscal,
+.confidence {
+  background: transparent !important;
+  box-shadow: none !important;
+  clip-path: none !important;
+  isolation: isolate;
+}
+
+.credibility-strip::after,
+.firm::after,
+.services::after,
+.fiscal::after,
+.confidence::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: -2;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.credibility-strip::after {
+  background-image:
+    linear-gradient(rgba(248,248,245,.94), rgba(248,248,245,.94)),
+    url("/light-threads.svg");
+  background-size: auto, 1550px auto;
+  background-position: center, 50% 12%;
+}
+
+.firm::after {
+  background-image:
+    linear-gradient(rgba(228,237,242,.78), rgba(228,237,242,.78)),
+    url("/light-threads.svg");
+  background-size: auto, 1750px auto;
+  background-position: center, 50% 40%;
+}
+
+.services::after {
+  background-image:
+    linear-gradient(rgba(248,248,245,.90), rgba(248,248,245,.90)),
+    url("/light-threads.svg");
+  background-size: auto, 1850px auto;
+  background-position: center, 52% 35%;
+}
+
+.fiscal::after {
+  background-image:
+    linear-gradient(rgba(229,238,242,.80), rgba(229,238,242,.80)),
+    url("/light-threads.svg");
+  background-size: auto, 1800px auto;
+  background-position: center, 48% 58%;
+}
+
+.confidence::after {
+  background-image:
+    linear-gradient(rgba(249,249,246,.92), rgba(249,249,246,.92)),
+    url("/light-threads.svg");
+  background-size: auto, 1700px auto;
+  background-position: center, 54% 70%;
+}
+
+/* Keep the existing soft tonal overlay above the full-bleed pattern */
+.firm::before,
+.services::before,
+.fiscal::before,
+.confidence::before {
+  z-index: -1;
+}
+
+@media (max-width: 720px) {
+  .credibility-strip::after {
+    background-size: auto, 1180px auto;
+  }
+
+  .firm::after {
+    background-size: auto, 1250px auto;
+  }
+
+  .services::after {
+    background-size: auto, 1350px auto;
+  }
+
+  .fiscal::after {
+    background-size: auto, 1300px auto;
+  }
+
+  .confidence::after {
+    background-size: auto, 1250px auto;
+  }
+}
