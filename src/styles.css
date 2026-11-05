@@ -1402,3 +1402,135 @@ footer {
     background-size: auto, 1250px auto;
   }
 }
+
+
+/* Continuous Threads-inspired treatment across the complete page */
+html {
+  background: #f3f5f5;
+}
+
+body {
+  background-color: #f3f5f5;
+  background-image:
+    url("/light-threads.svg"),
+    linear-gradient(180deg, #f4f6f6 0%, #eaf0f2 42%, #f6f6f2 100%);
+  background-size: 100vw auto, 100% 100%;
+  background-repeat: repeat-y, no-repeat;
+  background-position: center top, center;
+  background-attachment: scroll, fixed;
+}
+
+.site-shell {
+  position: relative;
+  isolation: isolate;
+  background: transparent;
+}
+
+/* Section colours become translucent so the global lines remain continuous underneath */
+.credibility-strip::after {
+  background-image: linear-gradient(rgba(248,248,245,.82), rgba(248,248,245,.82)) !important;
+  background-size: auto !important;
+}
+
+.firm::after {
+  background-image: linear-gradient(rgba(221,233,239,.72), rgba(221,233,239,.72)) !important;
+  background-size: auto !important;
+}
+
+.services::after {
+  background-image: linear-gradient(rgba(249,249,246,.78), rgba(249,249,246,.78)) !important;
+  background-size: auto !important;
+}
+
+.fiscal::after {
+  background-image: linear-gradient(rgba(221,233,239,.72), rgba(221,233,239,.72)) !important;
+  background-size: auto !important;
+}
+
+.confidence::after {
+  background-image: linear-gradient(rgba(249,249,246,.80), rgba(249,249,246,.80)) !important;
+  background-size: auto !important;
+}
+
+footer {
+  background: rgba(236,241,242,.78) !important;
+}
+
+/* Continue the same visual language through dark sections */
+.hero,
+.method,
+.contact {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background-image: url("/dark-threads.svg");
+  background-size: 100vw auto;
+  background-position: center 12%;
+  background-repeat: no-repeat;
+  opacity: .11;
+  mix-blend-mode: screen;
+}
+
+.hero-copy,
+.hero-trust {
+  position: relative;
+  z-index: 2;
+}
+
+.method::before,
+.contact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("/dark-threads.svg");
+  background-size: 100vw auto;
+  background-repeat: repeat-y;
+  background-position: center top;
+  opacity: .10;
+  mix-blend-mode: screen;
+}
+
+.method-inner,
+.contact-inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* Keep the global pattern visible edge-to-edge at every viewport size */
+@media (max-width: 1020px) {
+  body,
+  .hero::after,
+  .method::before,
+  .contact::before {
+    background-size: 1450px auto, 100% 100%;
+  }
+
+  .hero::after,
+  .method::before,
+  .contact::before {
+    background-size: 1450px auto;
+  }
+}
+
+@media (max-width: 720px) {
+  body {
+    background-size: 1200px auto, 100% 100%;
+  }
+
+  .hero::after,
+  .method::before,
+  .contact::before {
+    background-size: 1200px auto;
+    opacity: .085;
+  }
+}
