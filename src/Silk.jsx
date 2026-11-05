@@ -528,16 +528,20 @@ const Silk = ({
       wake();
     };
 
-    const resizeObserver = new ResizeObserver(resize);
-    resizeObserver.observe(container);
-    const intersection = new IntersectionObserver(entries => {
-      visible = entries.some(entry => entry.isIntersecting);
-      if (visible) {
-        last = 0;
-        wake();
-      }
-    });
-    intersection.observe(container);
+    const resizeObserver = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(resize) : null;
+    if (resizeObserver) resizeObserver.observe(container);
+    else window.addEventListener('resize', resize);
+
+    const intersection = typeof IntersectionObserver !== 'undefined'
+      ? new IntersectionObserver(entries => {
+          visible = entries.some(entry => entry.isIntersecting);
+          if (visible) {
+            last = 0;
+            wake();
+          }
+        })
+      : null;
+    if (intersection) intersection.observe(container);
     window.addEventListener('pointermove', onPointerMove, { passive: true });
     window.addEventListener('pointerdown', onPointerDown, { passive: true });
     document.documentElement.addEventListener('pointerleave', onPointerLeave);
@@ -559,8 +563,9 @@ const Silk = ({
     return () => {
       cancelAnimationFrame(raf);
       wakeRef.current = null;
-      resizeObserver.disconnect();
-      intersection.disconnect();
+      resizeObserver?.disconnect();
+      if (!resizeObserver) window.removeEventListener('resize', resize);
+      intersection?.disconnect();
       window.removeEventListener('pointermove', onPointerMove);
       window.removeEventListener('pointerdown', onPointerDown);
       document.documentElement.removeEventListener('pointerleave', onPointerLeave);
@@ -571,7 +576,6 @@ const Silk = ({
       gl.deleteProgram(compositeProgram.program);
       gl.deleteBuffer(buffer);
       gl.deleteVertexArray(vao);
-      gl.getExtension('WEBGL_lose_context')?.loseContext();
     };
   }, []);
 
